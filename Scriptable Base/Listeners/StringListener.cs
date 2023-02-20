@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Listener
 public class StringListener : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Event.String atEvent;
+    public UnityEvent<string> unityEvent;
+    private void OnEnable()
     {
-        
+        atEvent.Add(unityEvent.Invoke);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        atEvent.Remove(unityEvent.Invoke);
     }
 }
